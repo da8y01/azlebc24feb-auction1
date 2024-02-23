@@ -38,12 +38,6 @@ npm run icp:start
 Open another terminal and run:
 
 ```bash
-npm run icp:deploy
-```
-
-or
-
-```bash
 npm run icp:deploy:local
 ```
 
