@@ -1,0 +1,24 @@
+{
+  "name": "azle-api-rest-ckbtc",
+  "scripts": {
+    "postinstall": "npm run btc:install",
+    "btc:install": "sh ./scripts/bitcoin/install.sh",
+    "btc:start": ".bitcoin/bin/bitcoind -conf=$(pwd)/bitcoin.conf -datadir=$(pwd)/.bitcoin/data --port=18444",
+    "btc:mint": ".bitcoin/bin/bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress 50 $npm_config_address",
+    "icp:start": "dfx start --clean --enable-bitcoin",
+    "icp:canister:create": "dfx canister create --all",
+    "preicp:deploy:local": "npm run icp:canister:create",
+    "icp:deploy:local": "npm run icp:deploy:ckbtc && npm run icp:deploy:apps",
+    "icp:deploy:ckbtc": "sh ./scripts/ckbtc/ckbtc-deploy.sh",
+    "icp:deploy:apps": "sh ./scripts/apps/deploy-apps.sh"
+  },
+  "dependencies": {
+    "azle": "^0.20.2",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "prettier": "^3.2.5",
+    "typescript": "^5.2.2"
+  }
+}

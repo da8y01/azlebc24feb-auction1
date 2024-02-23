@@ -1,0 +1,12 @@
+# azle
+.azle
+src/frontend/dist
+
+# dfx
+.dfx
+
+# node
+node_modules
+
+# bitcoin
+.bitcoin
