@@ -1,7 +1,7 @@
 import { Principal, Server } from 'azle';
 import express, { Request, Response } from 'express';
-import { CkbtcLedger, CkbtcMinter } from './ckbtc';
 
+import { CkbtcLedger, CkbtcMinter } from './ckbtc';
 
 function generateId(): Principal {
     const randomBytes = new Array(29)
@@ -81,8 +81,6 @@ export default Server(() => {
         res.status(204);
         res.send();
     });
-
-    app.use(express.static('/dist'));
 
     return app.listen();
 });
