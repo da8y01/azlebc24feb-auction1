@@ -23,6 +23,7 @@ type Auction = {
     id: string,
     title: string,
     description?: string,
+    address: string,
 }
 
 let auctions: Auction[] = [];
@@ -90,12 +91,18 @@ export default Server(() => {
         res.send();
     });
 
-    app.post('/auction', async (req: Request<any, any, { title: string, description?: string }>, res: Response) => {
+    app.get('/auctions', (req, res) => {
+        res.json(auctions);
+    });
+
+    app.post('/auctions', async (req: Request<any, any, { title: string, description?: string }>, res: Response) => {
         const id = generateId();
+        const address = await ckbtcMinter.getAddress(id);
         const auction = {
             id: id.toString(),
             title: req.body.title,
-            description: req.body.description
+            description: req.body.description,
+            address
         };
 
         auctions = [
