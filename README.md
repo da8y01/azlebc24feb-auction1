@@ -1,17 +1,17 @@
-# Azle REST API with ckBTC Integration
+# Auctions Proof of Concept
 
 ## Run Locally
 
 Clone the project
 
 ```bash
-  git clone https://github.com/adrian-d-hidalgo/azle-api-rest-ckbtc
+  git clone https://github.com/da8y01/azlebc24feb-auction1
 ```
 
 Go to the project directory
 
 ```bash
-  cd azle-api-rest-ckbtc
+  cd azlebc24feb-auction1
 ```
 
 Install dependencies
@@ -40,6 +40,12 @@ Open another terminal and run:
 ```bash
 npm run icp:deploy:local
 ```
+
+## Auctions end points
+
+* `POST /auction { "title": "Some title", "description": "Optional additional text." }`
+
+* `POST /offer { "bidder": "ID PRINCIPAL OF THE BIDDER", "auctionId": "ID PRINCIPAL OF THE AUCTION", "amount": "NUMBER OF THE AMOUNT" }`
 
 # How to mint ckBTC
 

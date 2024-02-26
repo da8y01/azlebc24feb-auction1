@@ -1,5 +1,5 @@
 {
-  "name": "azle-api-rest-ckbtc",
+  "name": "azlebc24feb-auction1",
   "scripts": {
     "postinstall": "npm run btc:install",
     "btc:install": "sh ./scripts/bitcoin/install.sh",

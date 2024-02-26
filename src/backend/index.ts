@@ -19,6 +19,14 @@ type User = {
 
 let users: User[] = [];
 
+type Auction = {
+    id: string,
+    title: string,
+    description?: string,
+}
+
+let auctions: Auction[] = [];
+
 export default Server(() => {
     const app = express();
 
@@ -75,6 +83,37 @@ export default Server(() => {
         await ckbtcLedger.transfer(
             Principal.fromText(from),
             Principal.fromText(to),
+            amount
+        );
+
+        res.status(204);
+        res.send();
+    });
+
+    app.post('/auction', async (req: Request<any, any, { title: string, description?: string }>, res: Response) => {
+        const id = generateId();
+        const auction = {
+            id: id.toString(),
+            title: req.body.title,
+            description: req.body.description
+        };
+
+        auctions = [
+            ...auctions,
+            auction
+        ];
+
+        res.status(200);
+        res.send(auction);
+    });
+
+    app.post('/offer', async (req: Request<any, any, { bidder: string, auctionId: string, amount: number }>, res: Response) => {
+        const { bidder, auctionId, amount } = req.body;
+        const id = generateId();
+
+        await ckbtcLedger.transfer(
+            Principal.fromText(bidder),
+            Principal.fromText(auctionId),
             amount
         );
 
