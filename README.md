@@ -66,3 +66,8 @@ Wait for 5 around seconds and make a request to `POST /users/:userId/balance`
 Then, you can verify the user balance in this endpoint:
 
 `GET /users/:userId/balance`
+
+# ToDo
+
+* Validaciones de roles en las rutas.
+* Modificar la lógica para actuar como el usuario logueado al interactuar con formularios.
